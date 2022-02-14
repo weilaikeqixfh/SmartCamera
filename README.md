@@ -1,4 +1,4 @@
-[](https://note.youdao.com/ynoteshare/index.html?id=54a9c9bb8a43bd08bcbe7f358f2ee50c&type=note&_time=1644817307185)
+![](https://github.com/weilaikeqixfh/SmartCamera/blob/master/doc/%E9%A1%B9%E7%9B%AE%E6%B5%81%E7%A8%8B.png)
 
 1、摄像头启动连接服务器，发送相关信息
 {"cmd":"info","devicedid":"0001"}
