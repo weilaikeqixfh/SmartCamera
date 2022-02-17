@@ -7,6 +7,7 @@
 #include <pthread.h> 
 #include <json/json.h>
 #include <unistd.h>
+<<<<<<< HEAD
 #include <stdbool.h>
 #include <sys/epoll.h> 
 #include <errno.h>
@@ -16,6 +17,14 @@
 #include "epoll.h"
 #define SERVERPORT 8000
 #define MAX_EVENT_NUMBER 1024
+=======
+#include "node.h"
+#include "camera.h"
+#include "app.h"
+
+#define SERVERPORT 8000
+
+>>>>>>> d970c2450fadee3518be23bdd15a24cf687c6cf0
 
 Node *head = NULL;
 int port=9000;
@@ -32,14 +41,24 @@ void *ClientHandler(void *arg)
 	while(1)
 	{
 		recv_size=recv(fd,buf,sizeof(buf),0);
+<<<<<<< HEAD
 		if(recv_size<0)
 		{
 			perror("error");
+=======
+		if(-1==recv_size)
+		{
+			perror("error");
+			break;
+>>>>>>> d970c2450fadee3518be23bdd15a24cf687c6cf0
 		}
 		else if(recv_size==0)
 		{
 			printf("客户端%d 异常下线\n",fd);
+<<<<<<< HEAD
 			close(fd);
+=======
+>>>>>>> d970c2450fadee3518be23bdd15a24cf687c6cf0
 			break;
 		}
 
@@ -55,6 +74,7 @@ void *ClientHandler(void *arg)
 		}
 
 		else if(!strcmp(cmd,"get_video_data"))
+<<<<<<< HEAD
 			{
 				app_send_video_data(fd);
 			}
@@ -72,6 +92,16 @@ void *ClientHandler(void *arg)
 	//		printf("控制命令\n");
 	//		app_send_control_info(obj,fd);
 	//	}
+=======
+		{
+			app_send_video_data(fd);			
+		}
+		
+		else if(!strcmp(cmd,"control"))
+		{
+			app_send_control_info(obj);
+		}
+>>>>>>> d970c2450fadee3518be23bdd15a24cf687c6cf0
 	}
 }
 
@@ -108,6 +138,7 @@ int main()
 	
 	struct sockaddr_in client_addr;
 	socklen_t length=sizeof(client_addr);
+<<<<<<< HEAD
 
 	//创建epoll内核事件表
         int epollfd=epoll_create(20);
@@ -139,6 +170,20 @@ int main()
 		
 
 		}
+=======
+	while(1)
+	{
+		int fd=accept(sockfd,(struct sockaddr *)&client_addr ,&length);
+		if(fd==-1)
+		{
+			perror("accept error");
+		}
+
+		pthread_t tid;
+		pthread_create(&tid,NULL,ClientHandler,(void*)&fd);
+		pthread_detach(tid);
+		usleep(10000);
+>>>>>>> d970c2450fadee3518be23bdd15a24cf687c6cf0
 	}
 
 	return 0;
