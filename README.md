@@ -3,6 +3,8 @@
 ## 项目流程
 ![](https://github.com/weilaikeqixfh/SmartCamera/blob/master/doc/%E9%A1%B9%E7%9B%AE%E6%B5%81%E7%A8%8B.png)
 ### 源码
+### 关键字
+ C/S架构，TCP/UDP,Json,mjpj-stream,epoll,多线程
 ### 硬件、环境
  NanoPi duo2 开发板，OV5640 摄像头,Ubuntu  16.04 64位
 ### 项目各部分需要发送的数据类型  
